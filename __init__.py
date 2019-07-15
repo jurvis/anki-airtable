@@ -185,4 +185,10 @@ def hook():
     for table in Config["tables"]:
         airtableImport(mw.col, table["anki_deck"], table["anki_model"], table["airtable_table"], table["airtable_view"], table["airtable_key"])
 
-addHook("profileLoaded", hook)
+# Download on Anki Load
+# addHook("profileLoaded", hook)
+
+# Use Quick Action Menu Item
+action = QAction("Import from Airtable", mw)
+action.triggered.connect(hook)
+mw.form.menuTools.addAction(action)
